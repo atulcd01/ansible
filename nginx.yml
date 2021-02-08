@@ -1,0 +1,13 @@
+---
+- hosts: local
+  become: true
+  tasks:
+    - name: install tools
+      apt:
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+      loop:
+        - curl
+  roles:
+    - nginx
